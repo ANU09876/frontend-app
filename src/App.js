@@ -17,6 +17,17 @@ const App = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   };
+  const clearFormData = () => {
+    setFormData({
+      name: '',
+      age: '',
+      selectedBatch: '',
+      fee: '500',
+    });
+  };
+  const handleclick=async()=>{
+    await axios.get("http://localhost:3001/get-records")
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,16 +39,10 @@ const App = () => {
         return;
       }
       const response = await axios.post('https://server-kamt.onrender.com/create', formData);
+
       console.log(response.data);
-  
-      // Reset the form fields after successful submission
-      setFormData({
-        name: '',
-        age: '',
-        selectedBatch: '',
-        fee: '500',
-      });
-  
+      clearFormData();
+    
     } catch (error) {
       console.error(error);
     }
@@ -48,18 +53,20 @@ const App = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <h1 style={{ color: '#fff', marginBottom: '20px' }}>Yoga Class Admission Form</h1>
+      <a style={{color:'yellow'}} href={'http://localhost:3001/get-records'} target="_blank" rel="noopener noreferrer"
+>View students List</a>
       <form style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px', margin: '0 auto' }} onSubmit={handleSubmit}>
         <label style={{color:'white', marginBottom: '10px' }}>
           Name:
-          <input type="text" name="name" onChange={handleChange} required style={{ padding: '5px', margin: '5px' }} />
+          <input type="text" name="name" value={formData.name} onChange={handleChange} required style={{ padding: '5px', margin: '5px' }} />
         </label>
         <label style={{ color:'white',marginBottom: '10px' }}>
           Age:
-          <input type="number" name="age" onChange={handleChange} required style={{ padding: '5px', margin: '5px' }} />
+          <input type="number" name="age" value={formData.age} onChange={handleChange} required style={{ padding: '5px', margin: '5px' }} />
         </label>
         <label style={{ color:'white',marginBottom: '10px' }}>
           Select Batch:
-          <select name="selectedBatch" onChange={handleChange} required style={{ padding: '5px', margin: '5px' }}>
+          <select name="selectedBatch"value={formData.selectedBatch} onChange={handleChange} required style={{ padding: '5px', margin: '5px' }}>
             <option value="">Select Batch</option>
             <option value="6-7AM">6-7AM</option>
             <option value="7-8AM">7-8AM</option>
