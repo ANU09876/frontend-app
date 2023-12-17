@@ -25,9 +25,7 @@ const App = () => {
       fee: '500',
     });
   };
-  const handleclick=async()=>{
-    await axios.get("http://localhost:3001/get-records")
-  }
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,7 +51,7 @@ const App = () => {
   return (
     <div style={{ textAlign: 'center', padding: '20px' }}>
       <h1 style={{ color: '#fff', marginBottom: '20px' }}>Yoga Class Admission Form</h1>
-      <a style={{color:'yellow'}} href={'http://localhost:3001/get-records'} target="_blank" rel="noopener noreferrer"
+      <a style={{color:'yellow'}} href={'https://server-kamt.onrender.com/get-records'} target="_blank" rel="noopener noreferrer"
 >View students List</a>
       <form style={{ display: 'flex', flexDirection: 'column', maxWidth: '300px', margin: '0 auto' }} onSubmit={handleSubmit}>
         <label style={{color:'white', marginBottom: '10px' }}>
