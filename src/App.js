@@ -27,7 +27,7 @@ const App = () => {
         alert('Age must be between 18 and 65.');
         return;
       }
-      const response = await axios.post(`${BASE_URL}/create`, formData);
+      const response = await axios.post('https://server-kamt.onrender.com/create', formData);
       console.log(response.data);
   
       // Reset the form fields after successful submission
