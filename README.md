@@ -13,7 +13,5 @@ Use of REST-API
 API USED :
 /create(post)
 /get-records(get)
-
-
 ER DIAGRAM
 ![WhatsApp Image 2023-12-18 at 11 35 56 (1)](https://github.com/ANU09876/frontend-app/assets/100335998/5780f905-a9bd-4989-b3b0-2179b3e6a006)
